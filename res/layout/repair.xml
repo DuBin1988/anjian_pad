@@ -1,0 +1,2788 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://www.gueei.com/android-binding/"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/yhjbxx_bgimage"
+    android:orientation="vertical" >
+
+    <!-- 安检主界面 -->
+
+    <LinearLayout
+        android:id="@+id/MainContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal" >
+
+        <!-- 导航菜单 -->
+
+        <LinearLayout
+            android:id="@+id/LeftMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="6dp"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imageViewBasic"
+                android:layout_width="179dp"
+                android:layout_height="wrap_content"
+                binding:onClick="BasicImgClicked"
+                binding:source="basicImgId" />
+
+            <ImageView
+                android:id="@+id/imageViewMeter"
+                android:layout_width="179dp"
+                android:layout_height="wrap_content"
+                binding:onClick="MeterImgClicked"
+                binding:source="meterImgId" />
+
+            <ImageView
+                android:id="@+id/imageViewPlum"
+                android:layout_width="179dp"
+                android:layout_height="wrap_content"
+                binding:onClick="PlumImgClicked"
+                binding:source="plumImgId" />
+
+            <ImageView
+                android:id="@+id/imageViewCooker"
+                android:layout_width="179dp"
+                android:layout_height="wrap_content"
+                binding:onClick="CookerImgClicked"
+                binding:source="cookerImgId" />
+
+            <ImageView
+                android:id="@+id/imageViewHeater"
+                android:layout_width="179dp"
+                android:layout_height="wrap_content"
+                binding:onClick="HeaterImgClicked"
+                binding:source="heaterImgId" />
+
+            <ImageView
+                android:id="@+id/imageViewPrecaution"
+                android:layout_width="179dp"
+                android:layout_height="wrap_content"
+                binding:onClick="PrecautionImgClicked"
+                binding:source="precautionImgId" />
+
+            <ImageView
+                android:id="@+id/imageViewFeedback"
+                android:layout_width="179dp"
+                android:layout_height="wrap_content"
+                binding:onClick="FeedbackImgClicked"
+                binding:source="feedbackImgId" />
+            <ImageView
+                android:id="@+id/imageViewRepair"
+                android:layout_width="179dp"
+                android:layout_height="wrap_content"
+                binding:onClick="RepairImgClicked"
+                binding:source="repairImgId" />
+            </LinearLayout>
+
+        <!-- 主显示区 -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <!-- BasePane -->
+
+            <LinearLayout
+                android:id="@+id/basicPane"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right" >
+                    
+					<TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/blue"
+                        android:text="  用户基本信息"
+                        android:textColor="@color/white"
+                        android:textSize="26sp" >
+                    </TextView>
+                    
+                    </RelativeLayout>
+                </FrameLayout>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+            		 android:layout_marginTop="6dp"
+            		 android:layout_marginLeft="6dp"
+                    android:columnCount="6" >
+					<!--  -->
+
+                        <TextView
+                            android:id="@+id/noAnswerTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="家中无人:"
+                        android:layout_gravity="right"
+                            android:textColor="@color/black"
+                            android:textSize="26sp" >
+                        </TextView>
+
+                        <Switch
+                            android:id="@+id/noAnswerSwitch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/noAnswerTxt"
+                            android:layout_toRightOf="@id/noAnswerTxt"
+                            android:textColor="@color/white"
+                            android:textOff="否"
+                            android:textOn="是"
+                            android:textSize="26sp"
+                            binding:checked="IsNoAnswer" />
+
+                        <TextView
+                            android:id="@+id/denialTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/noAnswerSwitch"
+                            android:layout_toRightOf="@id/noAnswerSwitch"
+                            android:text="拒绝入户:"
+                            android:textColor="@color/black"
+                        android:layout_gravity="right"
+                            android:textSize="26sp" >
+                        </TextView>
+
+                        <Switch
+                            android:id="@+id/DenialSwitch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textOff="否"
+                            android:textOn="是"
+                            android:textSize="20sp"
+                            binding:checked="IsEntryDenied" />
+
+                        <TextView
+                            android:id="@+id/NoAnswerLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:text="已发到访不遇卡:"
+                        	android:layout_gravity="right"
+                            android:textColor="@color/black"
+                            android:textSize="26sp" />
+
+                        <CheckBox
+                            android:id="@+id/chkHasNotified"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            binding:checked="HasNotified" />
+                    <!--  -->
+
+                    <TextView
+                        android:layout_gravity="right"
+                        android:text="日期:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_gravity="fill"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="InspectionDate" />
+
+                    <TextView
+                        android:layout_gravity="right"
+                        android:text="到达时间:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_gravity="fill"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="ArrivalTime" />
+
+                    <TextView
+                        android:layout_gravity="right"
+                        android:text="离开时间:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/digitalClock"
+                        android:layout_gravity="fill"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" 
+                        binding:text="DepartureTime"/>
+                    <!--  -->
+
+                    <TextView
+                        android:layout_gravity="right"
+                        android:text="IC卡号:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:singleLine="true"
+                        android:layout_width="200dp"
+                        android:layout_gravity="fill"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:textSize="20sp"
+                        binding:text="ICCardNo" />
+                    
+                    <Button
+                        android:visibility="invisible"
+                        android:layout_columnSpan="4"
+                        android:text="查找"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"/>
+                    
+                    <!--  -->
+
+                    <TextView
+                        android:layout_gravity="right"
+                        android:text="户主姓名:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:singleLine="true"
+                        android:layout_width="200dp"
+                        android:layout_gravity="fill"
+                        android:inputType="textNoSuggestions|text"
+                        android:maxLength="10"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="UserName" />
+
+                    <TextView
+                        android:layout_gravity="right"
+                        android:text="电话:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:singleLine="true"
+                        android:layout_columnSpan="3"
+                        android:layout_width="200dp"
+                        android:layout_gravity="left"
+                        android:inputType="number"
+                        android:maxLength="11"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="Telephone" />
+
+                    <TextView
+                        android:layout_gravity="right"
+                        android:text="小区地址:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_gravity="fill"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="ResidentialAreaAddress" />
+                    <!--  -->
+
+                    <TextView
+                        android:layout_gravity="right"
+                        android:text="小区名称:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_columnSpan="3"
+                        android:layout_gravity="left"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="ResidentialAreaName" />
+
+                    <TextView
+                        android:layout_gravity="right"
+                        android:text="楼号:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_gravity="fill"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="BuildingNo" />
+                    <!--  -->
+
+                    <TextView
+                        android:layout_gravity="right"
+                        android:text="单元:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_gravity="fill"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="UnitNo" />
+
+                    <TextView
+                        android:layout_gravity="right"
+                        android:text="楼层:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_gravity="fill"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="LevelNo" />
+
+                    <TextView
+                        android:layout_gravity="right"
+                        android:text="房号:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_columnSpan="5"
+                        android:layout_gravity="left"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="RoomNo" />
+                    <!--  -->
+
+                    <TextView
+                        android:layout_gravity="right"
+                        android:text="用户档案地址:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_columnSpan="5"
+                        android:layout_gravity="fill"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="ArchiveAddress" />
+                    <!--  -->
+
+                    <TextView
+                        android:layout_gravity="right"
+                        android:text="房屋结构:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <Spinner
+                        android:id="@+id/StructureTypeList"
+                        android:layout_gravity="fill"
+                        binding:itemSource="StructureTypeList"
+                        binding:itemTemplate="@layout/simple_spinner_dropdown_item"
+                        binding:spinnerTemplate="@layout/simple_spinner_item" />
+
+                    <TextView
+                        android:layout_gravity="right"
+                        android:text="供暖方式:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <Spinner
+                        android:id="@+id/HeatedTypeList"
+                        android:layout_columnSpan="3"
+                        android:layout_width="250dp"
+                        android:layout_gravity="left"
+                        binding:itemSource="HeatedTypeList"
+                        binding:itemTemplate="@layout/simple_spinner_dropdown_item"
+                        binding:spinnerTemplate="@layout/simple_spinner_item" />
+                    <!--  -->
+
+                    <TextView
+                        android:layout_gravity="right"
+                        android:text="其他供暖方式:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:singleLine="true"
+                        android:id="@+id/OtherHeatedType"
+                        android:layout_columnSpan="3"
+                        android:layout_gravity="fill"
+                        android:maxLength="30"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="OtherHeatedType" />
+                </GridLayout>
+            </LinearLayout>
+            <!-- MeterPane -->
+
+            <LinearLayout
+                android:id="@+id/meterPane"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:textSize="20sp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="  燃气表信息"
+                        android:textColor="@color/white"
+                        android:textSize="26sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+            		android:layout_marginLeft="6dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IC卡号:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                         android:singleLine="true"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:textColor="@color/black"
+                        binding:text="ICCardNo" />
+
+                    <Button
+                    	android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="查找"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+            		android:layout_marginLeft="6dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="基表数:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:singleLine="true"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:textColor="@color/black"
+                        binding:text="BaseMeterQuantity" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="表内剩余气量:"
+                        android:textColor="@color/black"
+                        android:textSize="20px" />
+
+                    <EditText
+                        android:singleLine="true"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:textColor="@color/black"
+                        binding:text="RemainGasQuantity" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+            		android:layout_marginLeft="6dp"
+                    android:orientation="horizontal" >
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <RadioButton
+                            android:id="@+id/MeterOnTheLeft"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="左表"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/MeterOnTheRight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="右表"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="基表号:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:singleLine="true"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="BaseMeterID" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="燃气表生产年份:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:singleLine="true"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="MeterMadeYear" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+            		android:layout_marginLeft="6dp"
+                    android:orientation="horizontal" >
+
+                    <CheckBox
+                        android:id="@+id/MeterNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="正常"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/MeterWrapped"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="包裹"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/MeterLeakage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="漏气"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/MeterFallThrough"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="长通表"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/MeterDead"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="死表"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/MeterByPass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="表不过气"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/MeterOther"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="其他"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+            		android:layout_marginLeft="6dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="基表厂家型号:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <RadioButton
+                            android:id="@+id/MeterMakerDanDong"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="丹东"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/MeterMakerChongJian"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="重检"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/MeterMakerSaiFu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="赛福"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/MeterMakerChongQian"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="重前"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/MeterMakerShanCheng"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="山城"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/MeterMakerTianJinZiDongHua"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="天津自动化"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                        <RadioButton
+                            android:id="@+id/MeterMakerOtherBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="其他"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                        </RadioGroup>
+                   
+                </LinearLayout>
+				
+					<LinearLayout 
+					       android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="136dp"
+                    android:orientation="horizontal" >
+					     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="其他型号:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:singleLine="true"
+                        android:id="@+id/MeterMakerOther"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:maxLength="15"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="MeterMakerOther" />
+					</LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+            		android:layout_marginLeft="6dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IC卡表厂家型号:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <RadioButton
+                            android:id="@+id/ICMeterMakerHuaJie"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="华捷"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/ICMeterMakerSaiFu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="赛福"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/ICMeterMakerQinChuan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="秦川"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/ICMeterMakerQinGang"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="秦港"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/ICMeterMakerZhiLi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="致力"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                        <RadioButton
+                            android:id="@+id/ICMeterMakerOtherBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="其他"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                        </RadioGroup>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="其他型号:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/ICMeterMakerOther"
+                        android:singleLine="true"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:maxLength="15"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="ICMeterMakerOther" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+           			 android:layout_marginLeft="6dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="表型:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <RadioButton
+                            android:id="@+id/MeterTypeG25"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="G2.5"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/MeterTypeG4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="G4"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </RadioGroup>
+
+                </LinearLayout>
+            </LinearLayout>
+            <!-- PlumPane -->
+
+            <LinearLayout
+                android:id="@+id/plumPane"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue"
+                    android:text="  立管"
+                    android:textColor="@color/white"
+                    android:textSize="26sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+            		android:layout_marginLeft="6dp" >
+
+                    <CheckBox
+                        android:id="@+id/PlumNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="正常"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PlumWrapped"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="包裹"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PlumEroded"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="腐蚀("
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <RadioButton
+                            android:id="@+id/PlumErosionSevere"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="严重"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/PlumErosionModerate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="中度"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/PlumErosionSlight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="轻微"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=")"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PlumLeakage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="漏气"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PlumOther"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="其他"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" 
+            		android:layout_marginLeft="6dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="严密性测试:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+    			
+                    <CheckBox
+                        android:id="@+id/PlumProofNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="正常"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PlumProofLeakage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="6dp"
+                        android:text="漏气"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="60dp"
+                        android:text="静止压力:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <RadioButton
+                            android:id="@+id/PlumPressureNormal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="6dp"
+                            android:text="合格"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/PlumPressureAbnormal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="不合格"
+            		android:layout_marginLeft="6dp"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </RadioGroup>
+
+                    <EditText
+                        android:singleLine="true"
+                        android:id="@+id/PlumPressure"
+                        android:layout_width="62dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+            		android:layout_marginLeft="6dp"
+                        android:maxLength="10"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="PlumPressure" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pa"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/blue"
+                        android:text="  阀门"
+                        android:textColor="@color/white"
+                        android:textSize="26sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" 
+            			android:layout_marginLeft="6dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="表前阀:"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/MeterValveNormal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="正常"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/MeterValveInnerLeakage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="内漏"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/MeterValveLeakage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="漏气"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/MeterValveBall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="球阀"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/MeterValvePlug"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="旋塞"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/MeterValveWrapped"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="包裹"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+           				 android:layout_marginLeft="6dp" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="灶前阀:"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/CookerValveNormal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="正常"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/CookerValveInnerLeakage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="内漏"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/CookerValveLeakage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="漏气"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/CookerValveWrapped"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="包裹"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/CookerValveTooHigh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="安装过高"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" 
+            			android:layout_marginLeft="6dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="自闭阀:"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/AutoValveNormal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="正常"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/AutoValveInnerLeakage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="内漏"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/AutoValveLeakage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="漏气"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/AutoValveNotWork"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="失灵"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/AutoValveWrapped"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="包裹"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/blue"
+                        android:text="  户内管"
+           				 android:layout_marginLeft="6dp"
+                        android:textColor="@color/white"
+                        android:textSize="26sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+           				 android:layout_marginLeft="6dp"
+                        android:orientation="horizontal" >
+
+                        <CheckBox
+                            android:id="@+id/HomePlumNormal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="正常"
+                            android:textColor="@color/black"
+            		android:layout_marginLeft="5dp"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/HomePlumLeakage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="漏气"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/HomePlumThroughSittingRoom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="穿客厅"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/HomePlumThroughBedRoom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="穿卧室"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/HomePlumNearAppliance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="与电器过近"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/HomePlumWrapped"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="包裹"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/HomePlumModified"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="私改"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/HomePlumOtherUse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="厨房他用"
+                            android:textColor="@color/black" 
+                            android:textSize="20sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" 
+            		android:layout_marginLeft="6dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/blue"
+                        android:text="  漏气"
+                        android:textColor="@color/white"
+                        android:textSize="26sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" 
+            			android:layout_marginLeft="6dp">
+
+                        <CheckBox
+                            android:id="@+id/LeakageCooker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="灶具漏气 "
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/LeakageHeater"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="热水器漏气"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/LeakageBoiler"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="壁挂锅炉漏气"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/LeakageNotified"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="已发定期安检告知书"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+						
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- CookerPane -->
+
+            <LinearLayout
+                android:id="@+id/cookerPane"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue"
+                    android:text="  灶具"
+                    android:textColor="@color/white"
+                    android:textSize="26sp" />
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:columnCount="6"
+            android:layout_marginLeft="6dp" >
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <RadioButton
+                            android:id="@+id/CookerGangHuaZiJing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="港华紫荆"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/CookerWanHe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="万和"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/CookerWanJiaLe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="万家乐"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/CookerLinNei"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="林内"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/CookerHaiEr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="海尔"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/CookerALiSiDun"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="阿里斯顿"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/CookerYinhHua"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="樱花"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/CookerHuaDi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="华帝"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/CookerOther"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="其他"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </RadioGroup>
+                </GridLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" 
+            android:layout_marginLeft="6dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="型号:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <RadioButton
+                            android:id="@+id/CookeTypeTabletSingle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="台式单眼"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/CookerTypeTabletDouble"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="台式双眼"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/CookerTypeEmbedDouble"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="镶嵌双眼"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </RadioGroup>
+ 
+                </LinearLayout>
+<LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" 
+            android:layout_marginLeft="6dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="购置时间:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:singleLine="true"
+                        android:id="@+id/CookerBoughtTime"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="CookerBoughtTime" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="年"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" 
+            android:layout_marginLeft="6dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="软管:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/CookerPipeNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="正常"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/CookerPipeLeakage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="漏气"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/CookerPipeFatigue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="老化"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/CookerPipePrecaution"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="有安全隐患"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+                  <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" 
+            android:layout_marginLeft="6dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="安装管卡"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:singleLine="true"
+                        android:id="@+id/CookerPipeClampCount"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="CookerPipeClampCount" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="个"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" 
+            android:layout_marginLeft="6dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="更换软管"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                         android:singleLine="true"
+                        android:id="@+id/CookerPipeLength"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="CookerPipeLength" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="米"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                    </LinearLayout>
+            </LinearLayout>
+            <!-- HeaterPane -->
+
+            <LinearLayout
+                android:id="@+id/heaterPane"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue"
+                    android:text="  热水器"
+                    android:textColor="@color/white"
+                    android:textSize="26sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+            android:layout_marginLeft="6dp" >
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <RadioButton
+                            android:id="@+id/HeaterGangHuaZiJing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="港华紫荆"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HeaterWanHe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="万和"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HeaterWanJiaLe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="万家乐"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HeaterLinNei"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="林内"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HeaterHaiEr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="海尔"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HeaterALiSiDun"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="阿里斯顿"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HeaterYingHua"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="樱花"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HeaterHuaDi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="华帝"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/HeaterOther"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="其他"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+            android:layout_marginLeft="6dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="型号:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:singleLine="true"
+                        android:id="@+id/HeaterBrand"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="HeaterType" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="购置时间:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:singleLine="true"
+                        android:id="@+id/HeaterBoughtTime"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="HeaterBoughtTime" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="年"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="软管:"
+            android:layout_marginLeft="6dp"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/HeaterPipeNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="正常"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/HeaterPipeLeakage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="漏气"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/HeaterPipeFatigue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="老化"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/HeaterPipePrecaution"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="有安全隐患"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/HeaterPipePlastic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="铝塑管"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="更换管卡"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:singleLine="true"
+                        android:id="@+id/HeaterPipeClampCount"
+                        android:layout_width="92dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="HeaterPipeClampCount" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="个"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" 
+            android:layout_marginLeft="6dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="烟道:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <RadioButton
+                            android:id="@+id/VentilationBalanced"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="平衡"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/VentilationForce"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="强排"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/VentilationPath"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="烟道"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/VentilationStraight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="直排"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" 
+            android:layout_marginLeft="6dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="安全隐患:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/HeaterPrecautionNone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="无"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/HeaterPrecautionStraight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="直排热水器"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/HeaterPrecautionNoVentilation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="未安装烟道"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/HeaterPrecautionTrapped"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="烟道未排到室外"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/HeaterPrecautionProhibited"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="严禁使用"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <CheckBox
+                        android:id="@+id/HeaterPrecautionInHome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="90dp"
+                        android:text="安装在卧室"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/HeaterPrecautionBrokenVent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="烟道破损"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/HeaterPrecautionWrappedVent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="包裹烟道"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue"
+                    android:text="  壁挂锅炉"
+                    android:textColor="@color/white"
+                    android:textSize="26sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" 
+            android:layout_marginLeft="6dp">
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <RadioButton
+                            android:id="@+id/BoilerGangHuaZiJing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="港华紫荆"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BoilerWanHe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="万和"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BoilerWanJiaLe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="万家乐"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BoilerLinNei"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="林内"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BoilerHaiEr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="海尔"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BoilerALiSiDun"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="阿里斯顿"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BoilerYingHua"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="樱花"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BoilerHuaDi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="华帝"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/BoilerOther"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                            android:text="其他"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+            android:layout_marginLeft="6dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="型号:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:singleLine="true"
+                        android:id="@+id/BoilerBrand"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="BoilerType" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="购置时间:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:singleLine="true"
+                        android:id="@+id/BoilerBoughtTime"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        binding:text="BoilerBoughtTime" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="年"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="隐患:"
+            android:layout_marginLeft="6dp"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/BoilerPrecautionNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="正常"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/BoilerPrecautionInBedRoom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="壁挂炉安装在卧室"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/BoilerPrecautionNotified"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="已发定期安检告知书"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- PrecautionPane -->
+
+            <LinearLayout
+                android:id="@+id/precautionPane"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue"
+                    android:text="  隐患"
+                    android:textColor="@color/white"
+                    android:textSize="26sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" 
+            android:layout_marginLeft="6dp">
+
+                    <CheckBox
+                        android:id="@+id/PrecautionInBathRoom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="燃气设施安装在卧室/卫生间"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PrecautionInBedRoom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="燃气设备安装在卧室"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PrecautionLongPipe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="软管过长"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PrecautionPipeInDark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="软管暗敷"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+                    android:orientation="horizontal" >
+
+                    <CheckBox
+                        android:id="@+id/PrecautionThreeWay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="软管接三通"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PrecautionThroughFurniture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="软管穿柜/门窗/顶棚"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PrecautionThroughWall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="软管穿墙/地面"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PrecautionValidPipe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="使用非天然气专用软管"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+                    android:orientation="horizontal" >
+
+                    <CheckBox
+                        android:id="@+id/PrecautionWithConnector"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="软管上有接头"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PrecautionNearFire"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="软管离火源太近"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PrecautionWrapped"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="软管包裹"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PrecautionNotified"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="已发近期安检报告书"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PrecautionNoClamp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="无管卡"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+                    android:orientation="horizontal" >
+
+                    <CheckBox
+                        android:id="@+id/PrecautionMalPosition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="燃气具安装，摆放位置不规范"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PrecautionNearLiquefiedGas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="与液化气共处一室"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PrecautionPipeOutside"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="连接软管在户外"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+                    android:orientation="horizontal" >
+
+                    <CheckBox
+                        android:id="@+id/PrecautionUnsafeDevice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="使用非安全燃气具"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PrecautionLoosePipe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="软管连接没有固定"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/PrecautionElectricWire"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+            		android:layout_marginLeft="5dp"
+                        android:text="燃气管挂物接触电源线"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8px"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:id="@+id/image1"
+                            android:layout_width="150px"
+                            android:layout_height="105px"
+                            android:background="@drawable/nopic" />
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8px"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:id="@+id/image2"
+                            android:layout_width="150px"
+                            android:layout_height="105px"
+                            android:background="@drawable/nopic" />
+
+                     </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8px"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:id="@+id/image3"
+                            android:layout_width="150px"
+                            android:layout_height="105px"
+                            android:background="@drawable/nopic" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:id="@+id/image4"
+                            android:layout_width="150dp"
+                            android:layout_height="105dp"
+                            android:background="@drawable/nopic" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8px"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:id="@+id/image5"
+                            android:layout_width="150px"
+                            android:layout_height="105px"
+                            android:background="@drawable/nopic" />
+
+                    </LinearLayout>
+                </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+                    <CheckBox
+                        android:id="@+id/IsDispatchRepair"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5px"
+                        android:text="是否维修" 
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                            <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:text="维修人员:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <Spinner
+                        android:id="@+id/RepairManList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill"
+                        binding:itemSource="RepairManList"
+                        binding:itemTemplate="@layout/simple_spinner_dropdown_item"
+                        binding:spinnerTemplate="@layout/simple_spinner_item" />
+                            
+                    </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- FeedbackPane -->
+
+        <LinearLayout
+            android:id="@+id/feedbackPane"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue"
+                android:text="  客户意见反馈"
+                android:textColor="@color/white"
+                android:textSize="26sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="检查说明："
+                android:textColor="@color/black"
+            android:layout_marginLeft="6dp"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1.已对客户燃气设施进行了安全检查。"
+            android:layout_marginLeft="6dp"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2.已对客户进行了安全 用气知识宣传，并发放宣传资料"
+            android:layout_marginLeft="6dp"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3.已对客户 资料进行了登记。"
+            android:layout_marginLeft="6dp"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.已对违章及隐患之客户下发安检告知书。"
+            android:layout_marginLeft="6dp"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
+            <!--
+               <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 android:background="@color/blue"
+                android:textColor="@color/white"
+                android:textSize="26sp"
+                android:text="客户建议" />
+
+            <EditText
+                android:id="@+id/UserSuggestion"
+                android:layout_width="match_parent"
+                android:layout_height="60px"
+				android:gravity="left|top"
+       			android:inputType="textMultiLine"
+       			android:scrollbars="vertical"
+                android:textColor="@color/black"
+                binding:text="UserSuggestion"> 
+
+                <requestFocus />
+            </EditText>
+            -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" 
+            android:layout_marginLeft="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="客户签名:"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/signPad"
+                    android:layout_width="600dp"
+                    android:layout_height="283dp"
+                    android:background="@color/blue" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" 
+            android:layout_marginLeft="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="请对我们做出评价:"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/FeebackSatisfied"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="满意"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/FeebackOK"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="基本满意"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/FeebackUnsatisfied"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="不满意"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </RadioGroup>
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/repairPane"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+        <LinearLayout
+            android:id="@+id/repairOptionPane"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5px"
+                        android:text="占位符" 
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+            </LinearLayout>
+            <Button 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="上传维修结果"
+                android:textSize="20sp"
+                binding:onClick="upload"/>
+        </LinearLayout>
+      </LinearLayout>
+
+
+</LinearLayout>

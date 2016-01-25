@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://www.gueei.com/android-binding/"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+<GridLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="top|fill_vertical"
+    android:columnCount="2"
+    android:orientation="horizontal"
+    android:rowCount="2" >
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:layout_gravity="left|top"
+        android:layout_row="0"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/num1"
+            binding:onClick="PopulateList" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/num2" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/num3" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/num4" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/num5" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_gravity="left|fill_vertical"
+        android:layout_row="1"
+        binding:itemSource="TaskList"
+        binding:itemTemplate="@layout/task_entry" >
+
+    </ListView>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_column="1"
+        android:layout_gravity="top|left|fill_vertical|fill_horizontal"
+        android:layout_row="1"
+        android:columnCount="1"
+        android:orientation="horizontal"
+        android:rowCount="4" >
+
+   	<LinearLayout
+   	    android:layout_width="fill_parent"
+   	    android:orientation="horizontal" >
+
+   	 <TextView
+   	     android:layout_width="wrap_content"
+   	     android:layout_height="wrap_content"
+   	     binding:text="PersonName"
+   	     />
+
+   	 <TextView
+   	     android:layout_width="wrap_content"
+   	     android:layout_height="wrap_content"
+   	     binding:text="Content"
+   	     />
+
+   	 <EditText
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_weight="1"
+         android:ems="10"
+         binding:text="PersonName"
+         >
+         <requestFocus />
+     </EditText>
+
+     <EditText
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_weight="1"
+         android:ems="10"
+         binding:text="Content"
+         >
+         
+     </EditText>
+         
+     </LinearLayout>
+
+   	<TextView
+   	    android:id="@+id/textView1"
+   	    android:layout_gravity="left"
+   	    binding:text="Content"
+   	    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+   	<GridLayout android:layout_gravity="fill_horizontal" 
+   	    		android:layout_row="2">
+
+   		<TextView
+   		    android:id="@+id/textView2"
+   		    android:layout_gravity="left"
+   		    binding:text="PersonName"
+   		    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+   	</GridLayout>
+
+         <Button
+             android:id="@+id/buttonn"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="bottom|right"
+             android:layout_row="3"
+             android:text="@string/start_work"
+             binding:onClick="ToNext" />
+         
+        
+    </GridLayout>
+
+</GridLayout>
+
+</LinearLayout>
+</ScrollView>
