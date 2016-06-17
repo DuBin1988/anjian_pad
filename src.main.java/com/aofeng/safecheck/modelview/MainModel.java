@@ -61,11 +61,11 @@ public class MainModel {
 	};
 	
 	//进入计划定制
-//	public Command CustomPlan = new Command(){
-//		public void Invoke(View view, Object... args){
-//			Intent intent = new Intent(mContext,CustomPlanActivity.class);
-//			mContext.startActivity(intent);
-//		}
-//	};
+	public Command CustomPlan = new Command(){
+		public void Invoke(View view, Object... args){
+			Intent intent = new Intent(mContext,CustomPlanActivity.class);
+			mContext.startActivity(intent);
+		}
+	};
 
 }
